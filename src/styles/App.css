@@ -30,11 +30,35 @@
 .team {
   width: 30vw;
   position: absolute;
-  bottom: 0;
+  bottom: 5%;
   z-index: 3;
 }
 
 
 .logo {
   width: 60vw;
+  padding-top: 10vh;
+
+}
+
+
+@media (max-width: 900px) {
+  .logo {
+    width: 90vw;
+    padding-top: 3vh;
+  }
+
+  .team {
+    width: 60vw;
+    position: relative;
+  }
+
+
+  .hero{
+    align-items: center;
+  }
+
+  .hero-bg{
+    background:none
+  }
 }
