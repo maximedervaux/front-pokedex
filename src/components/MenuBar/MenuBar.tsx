@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@chakra-ui/react';
 import { TbPokeball } from 'react-icons/tb';
+import { Link } from 'react-router-dom';
 
 
 const MenuBar: React.FC = () => {
@@ -14,8 +15,8 @@ const MenuBar: React.FC = () => {
             }}
         >
             <div style={{ display: 'flex', gap: '0.5rem' }}>
-                <Button>Home</Button>
-                <Button>Pokédex</Button>
+                <Button as={Link} to="/">Home</Button>
+                <Button as={Link} to="/pokedex">Pokédex</Button>
                 <Button>About</Button>
             </div>
             <Button

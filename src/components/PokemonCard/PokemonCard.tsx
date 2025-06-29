@@ -1,13 +1,8 @@
 import React, { useRef, useEffect } from 'react';
-import { Box, VStack, Image, Heading, Text, HStack, Tag, Square } from '@chakra-ui/react';
+import { Box, VStack, Image, Heading, Text, HStack, Tag, Square, Link } from '@chakra-ui/react';
 import { useToken } from '@chakra-ui/react'; 
 import gsap from 'gsap';
-type PokemonCardProps = {
-    name: string;
-    image: string;
-    types: string[];
-    id: number;
-};
+import type { PokemonCardProps } from '../../types/pokemon.types';
 
 const typeBaseColorTokenMap = {
     normal: 'typeNormal',
@@ -37,10 +32,10 @@ function darkenColor(hex: string, percent: number): string {
 }
 
 
-const PokemonCard: React.FC<PokemonCardProps> = ({ name, image, types, id }) => {
-    const primaryType = types[0]?.toLowerCase();
+const PokemonCard: React.FC<PokemonCardProps> = ({ nom, hires, type, id }) => {
+    const primaryType = type[0]?.toLowerCase();
     const baseColorTokenName = typeBaseColorTokenMap[primaryType as TypeBaseColorKey] || 'gray.500';
-    const [primaryColorHex] = useToken('colors', [baseColorTokenName]); 
+    const [primaryColorHex] = useToken('colors', [baseColorTokenName]);
     const darkColorHex = darkenColor(primaryColorHex, 20);
     const cardBgGradient = `linear(to-b, ${primaryColorHex}, ${darkColorHex})`;
     const tagBgColor = primaryColorHex;
@@ -131,11 +126,12 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ name, image, types, id }) => 
 
 
     return (
-        <Box
-            bg="pokemon.red" 
-            borderRadius="lg" 
-            boxShadow="xl"
-            width={cardWidths}
+        <Link href={`/pokemon/${id}`}>
+            <Box
+                bg="pokemon.red"
+                borderRadius="lg"
+                boxShadow="xl"
+                width={cardWidths}
             height={cardHeights}
             display="flex"
             alignItems="center"
@@ -143,81 +139,81 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ name, image, types, id }) => 
             margin={0}
             padding={0}
             position="relative"
-            
             ref={cardRef}
+       
         >
-            <Text
-                position="absolute"
-                top={"-10px"} 
-                right={{base: "20px",md:"45px"}}
-                bg="white"
-                color="secondaryText"
-                p={{ base: "2px 5px", md: "5px 10px" }} 
-                borderRadius="md" 
-                fontSize={{ base: "xs", md: "lg", lg:"lg" }} 
-                fontWeight="bold"
-                zIndex="1" 
-                textAlign="center" 
-                whiteSpace="nowrap" 
+                <Text
+                    position="absolute"
+                    top={"-10px"} 
+                    right={{base: "20px",md:"45px"}}
+                    bg="white"
+                    p={{ base: "2px 5px", md: "5px 10px" }} 
+                    borderRadius="md" 
+                    fontSize={{ base: "xs", md: "lg", lg:"lg" }} 
+                    fontWeight="bold"
+                    zIndex="1" 
+                    textAlign="center" 
+                    whiteSpace="nowrap" 
 
-                ref={tagRef}
-            >
-                #{String(id).padStart(3, '0')}
-            </Text>
-
-            <Square
-                position="absolute"
-                top={"0px"} 
-                left={"0px"} 
-                size={{ base: "20px", sm: "30px", md: "40px", lg: "50px", xl: "60px" }}
-                aspectRatio={1}
-                bg="primaryAction"
-                zIndex="1"
-                boxShadow="md"
-                borderColor="gray.800"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                borderBottomRightRadius={"lg"} 
-                borderTopLeftRadius={"lg"} 
-                
-            >
-                <Image  src={`/types/${primaryType.toLowerCase()}.svg`} alt={primaryType} boxSize="100%" />
-                         
-            </Square>
-
-            <Box
-                bgGradient={cardBgGradient} 
-                width="96%"
-                height="96%"
-                borderRadius="md" 
-                p={4} 
-                color="textOnDark"
-                display="flex"
+                    ref={tagRef}
                 >
-                <VStack spacing={3} width="100%" height="100%" justifyContent="space-between">
-                    <Image
-                        ref={imageRef}
-                        src={image}
-                        alt={name}
-                        boxSize={'90%'}
-                        objectFit="contain"
-                        mt={{ base: 4, md: 6 }} 
-                        filter="drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4))"
-                    />
-                    <Heading as="h3" size={"lg"} textAlign="center" flexGrow={1} display="flex" alignItems="center" justifyContent="center">
-                        {name}
-                    </Heading>
-                    <HStack wrap="wrap" justifyContent="center" mt={2}>
-                        {types.map((type) => (
-                            <Tag key={type} size={{ base: "sm", md: "md" }} variant="solid" bg={tagBgColor}>
-                                {type}
-                            </Tag>
-                        ))}
-                    </HStack>
-                </VStack>
+                    #{String(id).padStart(3, '0')}
+                </Text>
+
+                <Square
+                    position="absolute"
+                    top={"0px"} 
+                    left={"0px"} 
+                    size={{ base: "20px", sm: "30px", md: "40px", lg: "50px", xl: "60px" }}
+                    aspectRatio={1}
+                    bg="primaryAction"
+                    zIndex="1"
+                    boxShadow="md"
+                    borderColor="gray.800"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    borderBottomRightRadius={"lg"} 
+                    borderTopLeftRadius={"lg"} 
+                    
+                >
+                    <Image  src={`/types/${primaryType.toLowerCase()}.svg`} alt={primaryType} boxSize="100%" />
+                            
+                </Square>
+
+                <Box
+                    bgGradient={cardBgGradient} 
+                    width="96%"
+                    height="96%"
+                    borderRadius="md" 
+                    p={4} 
+                    color="textOnDark"
+                    display="flex"
+                    >
+                    <VStack spacing={3} width="100%" height="100%" justifyContent="space-between">
+                        <Image
+                            ref={imageRef}
+                            src={hires}
+                            alt={nom}
+                            boxSize={'90%'}
+                            objectFit="contain"
+                            mt={{ base: 4, md: 6 }} 
+                            filter="drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4))"
+                        />
+                        <Heading as="h3" size={"lg"} textAlign="center" flexGrow={1} display="flex" alignItems="center" justifyContent="center" color={"textOnDark"}>
+                            {nom}
+                        </Heading>
+                        <HStack wrap="wrap" justifyContent="center" mt={2}>
+                            {type.map((type) => (
+                                <Tag key={type} size={{ base: "sm", md: "md" }} variant="solid" bg={tagBgColor}>
+                                    {type}
+                                </Tag>
+                            ))}
+                        </HStack>
+                    </VStack>
+                </Box>
             </Box>
-        </Box>
+        </Link>
     );
 
 
