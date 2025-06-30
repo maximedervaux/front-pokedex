@@ -1,0 +1,290 @@
+{
+  "currentPage": 1,
+  "totalPages": 90,
+  "totalItems": 898,
+  "pokemons": [
+    {
+      "id": 1,
+      "nom": "Bulbizarre",
+      "type": [
+        "Grass",
+        "Poison"
+      ],
+      "espece": "Seed Pokémon",
+      "description": "Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun’s rays, the seed grows progressively larger.",
+      "evolutionNiveau": "Level 16",
+      "taille": "0.7 m",
+      "poids": "6.9 kg",
+      "oeuf": [
+        "Monster",
+        "Grass"
+      ],
+      "genre": "87.5:12.5",
+      "talentPrincipal": "Overgrow",
+      "talentCache": "Chlorophyll",
+      "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/001.png",
+      "miniature": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/001.png",
+      "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/001.png",
+      "hp": 45,
+      "attaque": 49,
+      "defense": 49,
+      "attaqueSpe": 65,
+      "defenseSpe": 65,
+      "vitesse": 45
+    },
+    {
+      "id": 2,
+      "nom": "Herbizarre",
+      "type": [
+        "Grass",
+        "Poison"
+      ],
+      "espece": "Seed Pokémon",
+      "description": "There is a bud on this Pokémon’s back. To support its weight, Ivysaur’s legs and trunk grow thick and strong. If it starts spending more time lying in the sunlight, it’s a sign that the bud will bloom into a large flower soon.",
+      "evolutionNiveau": "Level 32",
+      "taille": "1 m",
+      "poids": "13 kg",
+      "oeuf": [
+        "Monster",
+        "Grass"
+      ],
+      "genre": "87.5:12.5",
+      "talentPrincipal": "Overgrow",
+      "talentCache": "Chlorophyll",
+      "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/002.png",
+      "miniature": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/002.png",
+      "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/002.png",
+      "hp": 60,
+      "attaque": 62,
+      "defense": 63,
+      "attaqueSpe": 80,
+      "defenseSpe": 80,
+      "vitesse": 60
+    },
+    {
+      "id": 3,
+      "nom": "Florizarre",
+      "type": [
+        "Grass",
+        "Poison"
+      ],
+      "espece": "Seed Pokémon",
+      "description": "There is a large flower on Venusaur’s back. The flower is said to take on vivid colors if it gets plenty of nutrition and sunlight. The flower’s aroma soothes the emotions of people.",
+      "evolutionNiveau": null,
+      "taille": "2 m",
+      "poids": "100 kg",
+      "oeuf": [
+        "Monster",
+        "Grass"
+      ],
+      "genre": "87.5:12.5",
+      "talentPrincipal": "Overgrow",
+      "talentCache": "Chlorophyll",
+      "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/003.png",
+      "miniature": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/003.png",
+      "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/003.png",
+      "hp": 80,
+      "attaque": 82,
+      "defense": 83,
+      "attaqueSpe": 100,
+      "defenseSpe": 100,
+      "vitesse": 80
+    },
+    {
+      "id": 4,
+      "nom": "Salamèche",
+      "type": [
+        "Fire"
+      ],
+      "espece": "Lizard Pokémon",
+      "description": "The flame that burns at the tip of its tail is an indication of its emotions. The flame wavers when Charmander is enjoying itself. If the Pokémon becomes enraged, the flame burns fiercely.",
+      "evolutionNiveau": "Level 16",
+      "taille": "0.6 m",
+      "poids": "8.5 kg",
+      "oeuf": [
+        "Monster",
+        "Dragon"
+      ],
+      "genre": "87.5:12.5",
+      "talentPrincipal": "Blaze",
+      "talentCache": "Solar Power",
+      "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/004.png",
+      "miniature": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/004.png",
+      "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/004.png",
+      "hp": 39,
+      "attaque": 52,
+      "defense": 43,
+      "attaqueSpe": 60,
+      "defenseSpe": 50,
+      "vitesse": 65
+    },
+    {
+      "id": 5,
+      "nom": "Reptincel",
+      "type": [
+        "Fire"
+      ],
+      "espece": "Flame Pokémon",
+      "description": "Charmeleon mercilessly destroys its foes using its sharp claws. If it encounters a strong foe, it turns aggressive. In this excited state, the flame at the tip of its tail flares with a bluish white color.",
+      "evolutionNiveau": "Level 36",
+      "taille": "1.1 m",
+      "poids": "19 kg",
+      "oeuf": [
+        "Monster",
+        "Dragon"
+      ],
+      "genre": "87.5:12.5",
+      "talentPrincipal": "Blaze",
+      "talentCache": "Solar Power",
+      "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/005.png",
+      "miniature": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/005.png",
+      "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/005.png",
+      "hp": 58,
+      "attaque": 64,
+      "defense": 58,
+      "attaqueSpe": 80,
+      "defenseSpe": 65,
+      "vitesse": 80
+    },
+    {
+      "id": 6,
+      "nom": "Dracaufeu",
+      "type": [
+        "Fire",
+        "Flying"
+      ],
+      "espece": "Flame Pokémon",
+      "description": "Charizard flies around the sky in search of powerful opponents. It breathes fire of such great heat that it melts anything. However, it never turns its fiery breath on any opponent weaker than itself.",
+      "evolutionNiveau": null,
+      "taille": "1.7 m",
+      "poids": "90.5 kg",
+      "oeuf": [
+        "Monster",
+        "Dragon"
+      ],
+      "genre": "87.5:12.5",
+      "talentPrincipal": "Blaze",
+      "talentCache": "Solar Power",
+      "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/006.png",
+      "miniature": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/006.png",
+      "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/006.png",
+      "hp": 78,
+      "attaque": 84,
+      "defense": 78,
+      "attaqueSpe": 109,
+      "defenseSpe": 85,
+      "vitesse": 100
+    },
+    {
+      "id": 7,
+      "nom": "Carapuce",
+      "type": [
+        "Water"
+      ],
+      "espece": "Tiny Turtle Pokémon",
+      "description": "Squirtle’s shell is not merely used for protection. The shell’s rounded shape and the grooves on its surface help minimize resistance in water, enabling this Pokémon to swim at high speeds.",
+      "evolutionNiveau": "Level 16",
+      "taille": "0.5 m",
+      "poids": "9 kg",
+      "oeuf": [
+        "Monster",
+        "Water 1"
+      ],
+      "genre": "87.5:12.5",
+      "talentPrincipal": "Torrent",
+      "talentCache": "Rain Dish",
+      "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/007.png",
+      "miniature": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/007.png",
+      "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/007.png",
+      "hp": 44,
+      "attaque": 48,
+      "defense": 65,
+      "attaqueSpe": 50,
+      "defenseSpe": 64,
+      "vitesse": 43
+    },
+    {
+      "id": 8,
+      "nom": "Carabaffe",
+      "type": [
+        "Water"
+      ],
+      "espece": "Turtle Pokémon",
+      "description": "Its tail is large and covered with a rich, thick fur. The tail becomes increasingly deeper in color as Wartortle ages. The scratches on its shell are evidence of this Pokémon’s toughness as a battler.",
+      "evolutionNiveau": "Level 36",
+      "taille": "1 m",
+      "poids": "22.5 kg",
+      "oeuf": [
+        "Monster",
+        "Water 1"
+      ],
+      "genre": "87.5:12.5",
+      "talentPrincipal": "Torrent",
+      "talentCache": "Rain Dish",
+      "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/008.png",
+      "miniature": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/008.png",
+      "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/008.png",
+      "hp": 59,
+      "attaque": 63,
+      "defense": 80,
+      "attaqueSpe": 65,
+      "defenseSpe": 80,
+      "vitesse": 58
+    },
+    {
+      "id": 9,
+      "nom": "Tortank",
+      "type": [
+        "Water"
+      ],
+      "espece": "Shellfish Pokémon",
+      "description": "Blastoise has water spouts that protrude from its shell. The water spouts are very accurate. They can shoot bullets of water with enough accuracy to strike empty cans from a distance of over 160 feet.",
+      "evolutionNiveau": null,
+      "taille": "1.6 m",
+      "poids": "85.5 kg",
+      "oeuf": [
+        "Monster",
+        "Water 1"
+      ],
+      "genre": "87.5:12.5",
+      "talentPrincipal": "Torrent",
+      "talentCache": "Rain Dish",
+      "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/009.png",
+      "miniature": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/009.png",
+      "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/009.png",
+      "hp": 79,
+      "attaque": 83,
+      "defense": 100,
+      "attaqueSpe": 85,
+      "defenseSpe": 105,
+      "vitesse": 78
+    },
+    {
+      "id": 10,
+      "nom": "Chenipan",
+      "type": [
+        "Bug"
+      ],
+      "espece": "Worm Pokémon",
+      "description": "Its body is soft and weak. In nature, its perpetual fate is to be seen by others as food.",
+      "evolutionNiveau": "Level 7",
+      "taille": "0.3 m",
+      "poids": "2.9 kg",
+      "oeuf": [
+        "Bug"
+      ],
+      "genre": "50:50",
+      "talentPrincipal": "Shield Dust",
+      "talentCache": "Run Away",
+      "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/010.png",
+      "miniature": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/010.png",
+      "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/010.png",
+      "hp": 45,
+      "attaque": 30,
+      "defense": 35,
+      "attaqueSpe": 20,
+      "defenseSpe": 20,
+      "vitesse": 45
+    }
+  ]
+}
