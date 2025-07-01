@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Spinner,
   Text,
   HStack,
@@ -13,13 +12,9 @@ import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { useState, useRef, useEffect } from 'react';
 import PokemonCard from '../components/PokemonCard/PokemonCard';
 import type { PokemonCardProps } from '../types/pokemon.types';
-import { MenuBar } from '../components';
+import { fetchPokemons } from '../api/pokemon.api';
 
-const fetchPokemons = async ({ page, limit }: { page: number; limit: number }) => {
-  const res = await fetch(`${import.meta.env.VITE_API_URL}pokemons?page=${page}&limit=${limit}`);
-  if (!res.ok) throw new Error('Erreur lors du fetch');
-  return res.json();
-};
+
 
 export default function Pokedex() {
   const [page, setPage] = useState(1);
@@ -60,7 +55,6 @@ export default function Pokedex() {
 
   return (
     <>
-      <MenuBar />
       <Box p={10} background="secondaryBackground" minH="100vh">
         {isPending ? (
           <Box textAlign="center">

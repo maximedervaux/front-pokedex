@@ -1,4 +1,3 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
 import {
   Box,
@@ -13,12 +12,11 @@ import {
   StatLabel,
   StatNumber,
   SimpleGrid,
-  useToast,
-  Menu,
+  
+  Toast,
 } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import type { PokemonDetails } from '../types/pokemon.types';
-import { MenuBar } from '../components';
 
 const fetchPokemonById = async (id: string | undefined): Promise<PokemonDetails> => {
   if (!id) throw new Error('ID de Pokémon manquant');
@@ -31,13 +29,11 @@ const fetchPokemonById = async (id: string | undefined): Promise<PokemonDetails>
 
 export default function PokemonDetailsPage() {
   const { id } = useParams<{ id: string }>();
-  const toast = useToast();
 
   const {
   data: pokemon,
   isLoading,
   isError,
-  error,
     } = useQuery<PokemonDetails>({
     queryKey: ['pokemon', id],
     queryFn: () => fetchPokemonById(id),
@@ -55,15 +51,15 @@ export default function PokemonDetailsPage() {
 
   if (isError || !pokemon) {
     return (
-      <Box p={4} minH="100vh">
+      <Toast p={4} minH="100vh">
         <Text>Impossible de charger les détails du Pokémon.</Text>
-      </Box>
+      </Toast>
     );
   }
 
   return (
     <>
-    <MenuBar/>
+   
     <Box p={6}  minH="100vh">
       <VStack spacing={6} align="start">
         <Heading>{pokemon.nom}</Heading>

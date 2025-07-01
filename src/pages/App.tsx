@@ -2,10 +2,8 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import '@/styles/App.css';
 import { MenuBar } from '../components';
-import { Box, Heading, HStack, Text, VStack, Image, Stack } from '@chakra-ui/react';
+import { Box, Heading, Text, VStack, Image, Stack } from '@chakra-ui/react';
 import PokemonList from '../components/PokemonList/PokemonList';
-
-
 import pokemonLogo from '@/assets/Pokemon 16 BIT.svg';
 import Team from '@/assets/team.png';
 import pixelMax from '@/assets/pixelmax.png';
@@ -28,7 +26,6 @@ function App() {
 
   return (
     <>
-      <MenuBar />
       <div className='hero'>
         <div ref={bgRef} className="hero-bg"></div>
         <div className="hero-content">
