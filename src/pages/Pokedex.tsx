@@ -7,10 +7,9 @@ import {
   useToast,
   Input,
   InputGroup,
-  Kbd,
-  Button,
+  Kbd
 } from '@chakra-ui/react';
-import { ChevronLeftIcon, ChevronRightIcon, CloseIcon } from '@chakra-ui/icons';
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { useState, useRef, useEffect } from 'react';
 import PokemonCard from '../components/PokemonCard/PokemonCard';
@@ -44,11 +43,7 @@ export default function Pokedex() {
     setPage(1); // Reset à la page 1 pour toute nouvelle recherche
   };
 
-  const clearSearch = () => {
-    setSearchTerm('');
-    setSearchInput('');
-    setPage(1); // Reset à la page 1 quand on revient à la liste complète
-  };
+  
 
   // Détermine si on est en mode recherche
   const isSearchMode = searchTerm.trim() !== '';
