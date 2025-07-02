@@ -1,8 +1,10 @@
 import React, { useRef, useEffect } from 'react';
-import { Box, VStack, Image, Heading, Text, HStack, Tag, Square, Link } from '@chakra-ui/react';
+import { Box, VStack, Image, Heading, Text, HStack, Tag, Square } from '@chakra-ui/react';
 import { useToken } from '@chakra-ui/react'; 
 import gsap from 'gsap';
 import type { PokemonCardProps } from '../../types/pokemon.types';
+import { Link } from 'react-router-dom';
+
 
 const typeBaseColorTokenMap = {
     normal: 'typeNormal',
@@ -126,7 +128,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ nom, hires, type, id }) => {
 
 
     return (
-        <Link href={`/pokemon/${id}`}>
+        <Link to={`/pokemon/${id}`}>
             <Box
                 bg="pokemon.red"
                 borderRadius="lg"
