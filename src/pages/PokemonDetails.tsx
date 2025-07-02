@@ -12,23 +12,26 @@ import {
   StatLabel,
   StatNumber,
   SimpleGrid,
-  
+  useToast,
   Toast,
+  Button,
 } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import type { PokemonDetails } from '../types/pokemon.types';
-
-const fetchPokemonById = async (id: string | undefined): Promise<PokemonDetails> => {
-  if (!id) throw new Error('ID de Pokémon manquant');
-  const response = await fetch(`${import.meta.env.VITE_API_URL}pokemons/${id}`);
-  if (!response.ok) {
-    throw new Error('Impossible de récupérer les détails du Pokémon');
-  }
-  return response.json();
-};
+import { useAuthContext } from '../auth/AuthContext';
+import { fetchPokemonById } from '../api/pokemon.api';
+import { addFavPokemon, removeFavPokemon } from '../api/user.api';
 
 export default function PokemonDetailsPage() {
   const { id } = useParams<{ id: string }>();
+  const { isAuthenticated } = useAuthContext();
+
+  if (!id) {
+    return (
+        <Text color={'white'}>Veuillez sélectionner un Pokémon.</Text>
+
+    );
+  }
 
   const {
   data: pokemon,
@@ -36,7 +39,7 @@ export default function PokemonDetailsPage() {
   isError,
     } = useQuery<PokemonDetails>({
     queryKey: ['pokemon', id],
-    queryFn: () => fetchPokemonById(id),
+    queryFn: () => fetchPokemonById(+id),
     enabled: !!id,
     retry: false
   });
@@ -49,7 +52,7 @@ export default function PokemonDetailsPage() {
     );
   }
 
-  if (isError || !pokemon) {
+  if (isError || !pokemon ) {
     return (
       <Toast p={4} minH="100vh">
         <Text>Impossible de charger les détails du Pokémon.</Text>
@@ -57,12 +60,33 @@ export default function PokemonDetailsPage() {
     );
   }
 
+  const isFavorite = pokemon.isFavorite || false; 
+  
+  const handleFavoriteToggle = () => {
+    if (isFavorite) {
+      removeFavPokemon(pokemon.id);
+    } else {
+      addFavPokemon(pokemon.id);
+    }
+    console.log(`${isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'} pour ${pokemon.nom}`);
+}
   return (
     <>
    
     <Box p={6}  minH="100vh">
       <VStack spacing={6} align="start">
-        <Heading>{pokemon.nom}</Heading>
+        <HStack justify="space-between" w="full">
+          <Heading>{pokemon.nom}</Heading>
+          {isAuthenticated && (
+            <Button
+              colorScheme="teal"
+              variant="outline"
+              onClick={handleFavoriteToggle}
+            >
+              {isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}
+            </Button>
+          )}
+        </HStack>
         <HStack spacing={4}>
           <Image src={pokemon.hires} alt={pokemon.nom} boxSize="200px" />
           <VStack align="start">
