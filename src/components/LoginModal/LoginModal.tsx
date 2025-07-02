@@ -102,6 +102,7 @@ export default function LoginModal({ onLogin }: LoginModalProps) {
                 mr={3}
                 isLoading={isLoading}
                 loadingText="Connexion..."
+                name="se connecter"
               >
                 Se connecter
               </Button>

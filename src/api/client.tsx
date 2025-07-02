@@ -30,14 +30,8 @@ api.interceptors.response.use(
     console.error('Erreur intercepteur response:', error.response?.status, error.response?.data);
     
     if (error.response?.status === 401) {
-      console.log('Token invalide détecté, suppression du localStorage');
       localStorage.removeItem('access_token');
-
       window.dispatchEvent(new CustomEvent('auth:logout'));
-      
-      if (!window.location.pathname.includes('/login')) {
-        window.location.href = '/login';
-      }
     }
     
     return Promise.reject(error);

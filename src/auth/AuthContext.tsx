@@ -70,6 +70,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     // Écouter les événements de déconnexion depuis l'intercepteur
     const handleAuthLogout = () => {
       console.log('Événement auth:logout reçu');
+      localStorage.removeItem('access_token'); 
       setToken(null);
       setUser(null);
     };
