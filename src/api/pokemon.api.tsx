@@ -3,7 +3,7 @@ import api from './client';
 export const fetchPokemons = async ({ page, limit }: { page: number; limit: number }) => {
   const res = await api.get(`/pokemons?page=${page}&limit=${limit}`);
   if (res.status < 200 || res.status >= 300) throw new Error('Erreur lors du fetch');
-  return res.data.pokemons;
+  return res.data;
 };
 
 export const fetchPokemonById = async (id: number) => {
@@ -13,8 +13,8 @@ export const fetchPokemonById = async (id: number) => {
   return res.data;
 };
 
-export const fetchPokemonByName = async (name: string) => {
-  const res = await api.get(`/pokemons/search/`, { params: { name } });
+export const fetchPokemonByName = async (name: string ,page: number ,limit: number) => {
+  const res = await api.get(`/pokemons/search?page=${page}&limit=${limit}`, { params: { name } });
   if (res.status < 200 || res.status >= 300) throw new Error('Erreur lors du fetch');
   return res.data;
 }
