@@ -6,13 +6,16 @@ import {
   IconButton,
   useToast,
   Input,
+  InputGroup,
+  Kbd,
 } from '@chakra-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { useState, useRef, useEffect } from 'react';
 import PokemonCard from '../components/PokemonCard/PokemonCard';
 import type { PokemonCardProps } from '../types/pokemon.types';
-import { fetchPokemons } from '../api/pokemon.api';
+import { fetchPokemonByName, fetchPokemons } from '../api/pokemon.api';
+import { LuSearch } from "react-icons/lu"
 
 
 
@@ -23,18 +26,43 @@ export default function Pokedex() {
   const lastValidPage = useRef(1);
   const toast = useToast();
 
-  const {
-    data,
-    isError,
-    isPending,
-    isFetching,
-  } = useQuery({
-    queryKey: ['pokemons', page, limit],
-    queryFn: () => fetchPokemons({ page, limit }),
-    placeholderData: keepPreviousData,
-    retry: false,
-    staleTime: 0,
-  });
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchInput, setSearchInput] = useState('');
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+     setSearchInput(e.target.value);
+  };
+
+    const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      setSearchTerm(searchInput.trim());
+      setPage(1); 
+    }
+  };
+
+
+  
+
+ const {
+  data,
+  isError,
+  isPending,
+  isFetching,
+} = useQuery({
+  queryKey: searchTerm.trim()
+    ? ['search-pokemon', searchTerm]
+    : ['pokemons', page, limit],
+  queryFn: () => {
+    if (searchTerm.trim()) {
+      return fetchPokemonByName(searchTerm);
+    }
+    return fetchPokemons({ page, limit });
+  },
+  placeholderData: keepPreviousData,
+  retry: false,
+  staleTime: 0,
+});
+
 
   const totalPages = data?.totalPages ?? 1;
 
@@ -62,6 +90,16 @@ export default function Pokedex() {
           </Box>
         ) : (
           <>
+              <InputGroup mb={6} position="relative" w={['100%', '50%', '40%']} display={'flex'} justifyContent={'center'} mx={'auto'}>
+                <Box as="span" position="absolute" left="0" top="0" height="100%" display="flex" alignItems="center" pl={2} color="textOnDark">
+                  <LuSearch />
+                </Box>
+                <Input placeholder="Search pokemons" pl="2.5em" pr="3.5em" color="textOnDark" value={searchInput} onChange={handleSearchChange} onKeyDown={handleSearchKeyDown} />
+                <Box position="absolute" right="0" top="0" height="100%" display="flex" alignItems="center" pr={2}>
+                  <Kbd>Enter</Kbd>
+                </Box>
+              </InputGroup>
+
             <Box
               gap="40px"
               alignItems="center"
@@ -69,7 +107,8 @@ export default function Pokedex() {
               display="flex"
               flexWrap="wrap"
             >
-              {data?.pokemons.map((pokemon: PokemonCardProps) => (
+              
+              {data?.map((pokemon: PokemonCardProps) => (
                 <PokemonCard
                   key={pokemon.id}
                   nom={pokemon.nom}

@@ -13,10 +13,9 @@ import {
   StatNumber,
   SimpleGrid,
   useToast,
-  Toast,
   Button,
 } from '@chakra-ui/react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import type { PokemonDetails } from '../types/pokemon.types';
 import { useAuthContext } from '../auth/AuthContext';
 import { fetchPokemonById } from '../api/pokemon.api';
@@ -25,23 +24,78 @@ import { addFavPokemon, removeFavPokemon } from '../api/user.api';
 export default function PokemonDetailsPage() {
   const { id } = useParams<{ id: string }>();
   const { isAuthenticated } = useAuthContext();
+  const toast = useToast();
+  const queryClient = useQueryClient();
 
   if (!id) {
     return (
-        <Text color={'white'}>Veuillez sélectionner un Pokémon.</Text>
-
+      <Text color={'white'}>Veuillez sélectionner un Pokémon.</Text>
     );
   }
 
   const {
-  data: pokemon,
-  isLoading,
-  isError,
-    } = useQuery<PokemonDetails>({
+    data: pokemon,
+    isLoading,
+    isError,
+  } = useQuery<PokemonDetails>({
     queryKey: ['pokemon', id],
     queryFn: () => fetchPokemonById(+id),
     enabled: !!id,
     retry: false
+  });
+
+  // Mutation pour ajouter aux favoris
+  const addToFavoritesMutation = useMutation({
+    mutationFn: (pokemonId: number) => addFavPokemon(pokemonId),
+    onSuccess: () => {
+      // Invalider et refetch les données du pokémon pour mettre à jour l'état favori
+      queryClient.invalidateQueries({ queryKey: ['pokemon', id] });
+      
+      toast({
+        title: "Ajouté aux favoris !",
+        description: `${pokemon?.nom} a été ajouté à vos favoris.`,
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+    },
+    onError: (error) => {
+      console.error('Erreur lors de l\'ajout aux favoris:', error);
+      toast({
+        title: "Erreur",
+        description: "Impossible d'ajouter ce Pokémon aux favoris. Veuillez réessayer.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+  });
+
+  // Mutation pour retirer des favoris
+  const removeFromFavoritesMutation = useMutation({
+    mutationFn: (pokemonId: number) => removeFavPokemon(pokemonId),
+    onSuccess: () => {
+      // Invalider et refetch les données du pokémon pour mettre à jour l'état favori
+      queryClient.invalidateQueries({ queryKey: ['pokemon', id] });
+      
+      toast({
+        title: "Retiré des favoris",
+        description: `${pokemon?.nom} a été retiré de vos favoris.`,
+        status: "info",
+        duration: 3000,
+        isClosable: true,
+      });
+    },
+    onError: (error) => {
+      console.error('Erreur lors de la suppression des favoris:', error);
+      toast({
+        title: "Erreur",
+        description: "Impossible de retirer ce Pokémon des favoris. Veuillez réessayer.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    }
   });
 
   if (isLoading) {
@@ -52,28 +106,27 @@ export default function PokemonDetailsPage() {
     );
   }
 
-  if (isError || !pokemon ) {
+  if (isError || !pokemon) {
     return (
-      <Toast p={4} minH="100vh">
+      <Box p={4} minH="100vh">
         <Text>Impossible de charger les détails du Pokémon.</Text>
-      </Toast>
+      </Box>
     );
   }
 
-  const isFavorite = pokemon.isFavorite || false; 
-  
+  const isFavorite = pokemon.isFavori || false;
+  const isUpdatingFavorite = addToFavoritesMutation.isPending || removeFromFavoritesMutation.isPending;
+
   const handleFavoriteToggle = () => {
     if (isFavorite) {
-      removeFavPokemon(pokemon.id);
+      removeFromFavoritesMutation.mutate(pokemon.id);
     } else {
-      addFavPokemon(pokemon.id);
+      addToFavoritesMutation.mutate(pokemon.id);
     }
-    console.log(`${isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'} pour ${pokemon.nom}`);
-}
+  };
+
   return (
-    <>
-   
-    <Box p={6}  minH="100vh">
+    <Box p={6} minH="100vh">
       <VStack spacing={6} align="start">
         <HStack justify="space-between" w="full">
           <Heading>{pokemon.nom}</Heading>
@@ -82,11 +135,15 @@ export default function PokemonDetailsPage() {
               colorScheme="teal"
               variant="outline"
               onClick={handleFavoriteToggle}
+              isLoading={isUpdatingFavorite}
+              loadingText={isFavorite ? "Suppression..." : "Ajout..."}
+              disabled={isUpdatingFavorite}
             >
               {isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}
             </Button>
           )}
         </HStack>
+        
         <HStack spacing={4}>
           <Image src={pokemon.hires} alt={pokemon.nom} boxSize="200px" />
           <VStack align="start">
@@ -94,8 +151,8 @@ export default function PokemonDetailsPage() {
             <Text>{pokemon.description}</Text>
             <HStack>
               {pokemon.type.map((t) => (
-                  <Badge key={t} colorScheme="teal">{t}</Badge>
-                ))}
+                <Badge key={t} colorScheme="teal">{t}</Badge>
+              ))}
             </HStack>
             <Text><b>Évolution :</b> {pokemon.evolutionNiveau}</Text>
             <Text><b>Genre :</b> {pokemon.genre}</Text>
@@ -116,6 +173,5 @@ export default function PokemonDetailsPage() {
         </SimpleGrid>
       </VStack>
     </Box>
-   </>
   );
 }

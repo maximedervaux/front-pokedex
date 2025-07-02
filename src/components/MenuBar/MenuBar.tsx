@@ -51,16 +51,13 @@ const MenuBar: React.FC = () => {
                 >
                     Pokédex
                 </Button>
-                <Button variant="ghost">
-                    About
-                </Button>
+        
             </div>
 
             {/* Section droite - Authentification */}
             <div>
                 {isLoading ? (
-                    // Affichage pendant le chargement
-                    <Spinner size="sm" />
+                    <Spinner size="sm" data-testid="loading-spinner" />
                 ) : isAuthenticated && user ? (
                     // Utilisateur connecté - Menu déroulant
                     <Menu>

@@ -58,10 +58,10 @@ function App() {
         spacing={6}
       >
         <Image src={pixelMax} alt="Max" h={{ base: "200px", md: "80%" }} objectFit="contain" transform="scaleX(-1)" />
-        <VStack spacing={4} align="center">
+        <VStack spacing={4} align="center" justifyContent={"start"}>
           <Heading color="textOnDark">Max</Heading>
           <Text color="textOnDark">
-           Frontend Developper wtf
+           Frontend Developper 
           </Text>
         </VStack>
       </Stack>
@@ -76,8 +76,8 @@ function App() {
         w="100%"
         spacing={6}
       >
-        <Image src={pixelugo} alt="Ugo" h={{ base: "200px", md: "80%" }} objectFit="contain" />
-        <VStack spacing={4} align="center">
+        <Image src={pixelugo} alt="Ugo" h={{ base: "200px", md: "80%" }} objectFit="contain" display={"flex"} />
+        <VStack spacing={4} align="center" justifyContent={"start"}>
           <Heading color="textOnDark">Ugo</Heading>
           <Text color="textOnDark">
             Backend Developper

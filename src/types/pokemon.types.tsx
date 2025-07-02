@@ -22,5 +22,6 @@ export interface PokemonDetails extends PokemonCardProps {
       defense: number,
       attaqueSpe: number,
       defenseSpe: number,
-      vitesse: number
+      vitesse: number,
+      isFavori: boolean;
 }
