@@ -16,6 +16,7 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { TbPokeball } from 'react-icons/tb';
+import { Link } from 'react-router';
 
 interface LoginModalProps {
   onLogin: (credentials: { login: string; password: string }) => Promise<void>;
@@ -93,8 +94,12 @@ export default function LoginModal({ onLogin }: LoginModalProps) {
                   required
                 />
               </FormControl>
+              <Link to="/signup" onClick={handleClose}>
+                S'inscrire
+              </Link>
             </ModalBody>
 
+            
             <ModalFooter>
               <Button 
                 colorScheme="red" 

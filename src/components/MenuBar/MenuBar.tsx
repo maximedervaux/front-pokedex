@@ -68,7 +68,7 @@ const MenuBar: React.FC = () => {
                             </HStack>
                         </MenuButton>
                         <MenuList>
-                            <MenuItem as={Link} to="/profile">
+                            <MenuItem disabled>
                                 🔧 Mon profil
                             </MenuItem>
                             <MenuItem as={Link} to="/favorites">
