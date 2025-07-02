@@ -36,3 +36,19 @@ export const fetchMe = async (token: string): Promise<User> => {
     throw error;
   }
 };
+
+
+export const signupUser = async (login: string, password: string) => {
+  
+  try {
+    const response = await api.post('/auth/register', { 
+      username: login, 
+      password  
+    });
+    
+    return response.status;
+  } catch (error) {
+    console.error('Erreur signup:', error);
+    throw error;
+  }
+}
