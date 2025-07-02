@@ -13,6 +13,7 @@ export interface PokemonDetails extends PokemonCardProps {
       taille: string,
       poids: string,
       genre: string,
+      oeuf: string[],
       talentPrincipal: string,
       talentCache: string,
       sprite: string,
@@ -25,3 +26,5 @@ export interface PokemonDetails extends PokemonCardProps {
       vitesse: number,
       isFavori: boolean;
 }
+
+

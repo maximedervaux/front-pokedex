@@ -68,8 +68,8 @@ const MenuBar: React.FC = () => {
                             </HStack>
                         </MenuButton>
                         <MenuList>
-                            <MenuItem disabled>
-                                🔧 Mon profil
+                            <MenuItem as={Link} to="/add-pokemon">
+                                ➕ Ajouter un Pokémon
                             </MenuItem>
                             <MenuItem as={Link} to="/favorites">
                                 ❤️ Mes favoris

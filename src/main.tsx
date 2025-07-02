@@ -15,6 +15,7 @@ import PokedexPage from './pages/Pokedex.tsx';
 import PokemonDetailsPage from './pages/PokemonDetails.tsx';
 import FavoritesPage from './pages/Favorites.tsx';
 import SignupPage from './pages/Signup.tsx';
+import AddPokemonPage from './pages/AddPokemon.tsx';
 
 async function init() {
   
@@ -37,6 +38,7 @@ const queryClient = new QueryClient()
               <Route path="/pokemon/:id" element={<PokemonDetailsPage />} />
               <Route path="/favorites" element={<FavoritesPage />} />
               <Route path="/signup" element={<SignupPage />} />
+              <Route path="/add-pokemon" element={<AddPokemonPage />} />
               {/* <Route path="/about" element={<AboutPage />} />
               <Route path="/login" element={<LoginPage />} /> */}
             </Routes>

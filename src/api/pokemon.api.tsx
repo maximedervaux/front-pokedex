@@ -24,3 +24,11 @@ export const fetchPokemonByTypes = async () => {
   if (res.status < 200 || res.status >= 300) throw new Error('Erreur lors du fetch');
   return res.data;
 };
+
+
+export const postpokemon = async (pokemon: any) => {
+  console.log('Données du Pokémon à envoyer:', pokemon);
+  const res = await api.post(`/pokemons`, pokemon);
+  if (res.status < 200 || res.status >= 300) throw new Error('Erreur lors de la création du Pokémon');
+  return res.data;
+}
