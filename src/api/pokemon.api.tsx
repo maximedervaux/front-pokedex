@@ -1,9 +1,9 @@
-
+import api from './client';
 
 export const fetchPokemons = async ({ page, limit }: { page: number; limit: number }) => {
-  const res = await fetch(`${import.meta.env.VITE_API_URL}pokemons?page=${page}&limit=${limit}`);
-  if (!res.ok) throw new Error('Erreur lors du fetch');
-  return res.json();
+  const res = await api.get(`/pokemons?page=${page}&limit=${limit}`);
+  if (res.status < 200 || res.status >= 300) throw new Error('Erreur lors du fetch');
+  return res.data;
 };
 
 
