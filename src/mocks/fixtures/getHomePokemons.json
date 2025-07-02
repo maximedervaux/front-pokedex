@@ -1,0 +1,37 @@
+{
+  "pokemons": [
+    {
+      "id": 1,
+      "nom": "Bulbizarre",
+      "type": [
+        "Grass",
+        "Poison"
+      ], 
+      "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/001.png"
+    }, 
+    {
+      "id": 151,
+      "nom": "Mew",
+      "type": [
+        "Psychic"
+      ], 
+      "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/151.png"
+    },
+    {
+      "id": 25,
+      "nom": "Pikachu",
+      "type": [
+        "Electric"
+      ], 
+      "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/025.png"
+    },
+    {
+      "id": 78,
+      "nom": "Galopa",
+      "type": [
+        "Fire"
+      ], 
+      "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/078.png"
+    }
+  ]
+}

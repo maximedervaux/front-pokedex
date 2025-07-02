@@ -1,8 +1,7 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef} from 'react';
 import gsap from 'gsap';
 import '@/styles/App.css';
-import { MenuBar } from '../components';
-import { Box, Heading, Text, VStack, Image, Stack } from '@chakra-ui/react';
+import { Heading, Text, VStack, Image, Stack } from '@chakra-ui/react';
 import PokemonList from '../components/PokemonList/PokemonList';
 import pokemonLogo from '@/assets/Pokemon 16 BIT.svg';
 import Team from '@/assets/team.png';
@@ -11,7 +10,7 @@ import pixelugo from '@/assets/pixelugo.png';
 
 function App() {
   const bgRef = useRef(null);
-
+  
   useEffect(() => {
     const anim = gsap.to(bgRef.current, {
       y: -20,          
@@ -34,18 +33,10 @@ function App() {
         </div>
       </div>
 
-     <Box
-        display='flex'
-        flexWrap='wrap'
-        justifyContent='center'
-        alignItems='center'
-        gap='20px'
-        padding='20px'
-        bg='secondaryBackground' 
-        minH="100vh" 
-      >
+      <div>
         <PokemonList />
-      </Box>
+      </div>
+
 
      <Stack
       direction={{ base: "column", md: "row" }}
@@ -56,7 +47,6 @@ function App() {
       padding={4}
 
     >
-      {/* Card 1 */}
       <Stack
         direction={{ base: "column", md: "row" }}
         backgroundColor="secondaryBackground2"
@@ -76,7 +66,6 @@ function App() {
         </VStack>
       </Stack>
 
-      {/* Card 2 */}
       <Stack
         direction={{ base: "column", md: "row-reverse" }}
         backgroundColor="secondaryBackground2"

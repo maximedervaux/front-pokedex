@@ -14,7 +14,8 @@ import { MenuBar } from './components/index.tsx';
 import { AuthProvider } from './auth/AuthContext.tsx';
 
 async function init() {
-  if (import.meta.env.DEV) {
+  
+  if (!import.meta.env.DEV) {
     const { worker } = await import('./mocks/browser.js');
     await worker.start();
   }
